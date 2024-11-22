@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:52:17 by nafarid           #+#    #+#             */
-/*   Updated: 2024/11/22 10:06:14 by nafarid          ###   ########.fr       */
+/*   Updated: 2024/11/22 18:43:47 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_printf(const char *format, ...)
 	size_t	len;
 	size_t	i;
 
+	if (!format)
+		return (-1);
 	i = 0;
 	len = 0;
 	va_start(args, format);
@@ -57,10 +59,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (len);
 }
-// int main()
-// {
-// 	ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%
-// %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42
-// ,42 , 42, 42, 'B', "-42", -42, 
-//-42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-// }
