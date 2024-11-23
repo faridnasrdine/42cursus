@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:52:17 by nafarid           #+#    #+#             */
-/*   Updated: 2024/11/22 18:43:47 by nafarid          ###   ########.fr       */
+/*   Updated: 2024/11/23 14:25:35 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	check_format(va_list args, const char format)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (format == 'c')
@@ -37,8 +37,8 @@ static int	check_format(va_list args, const char format)
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	size_t	len;
-	size_t	i;
+	int		len;
+	int		i;
 
 	if (!format)
 		return (-1);
