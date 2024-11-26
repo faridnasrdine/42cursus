@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 10:48:02 by nafarid           #+#    #+#             */
-/*   Updated: 2024/11/23 14:24:47 by nafarid          ###   ########.fr       */
+/*   Updated: 2024/11/25 09:47:12 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	print_char(char c)
 
 int	print_string(char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!str)

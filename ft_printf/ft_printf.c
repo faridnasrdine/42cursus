@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:52:17 by nafarid           #+#    #+#             */
-/*   Updated: 2024/11/23 14:25:35 by nafarid          ###   ########.fr       */
+/*   Updated: 2024/11/25 14:06:57 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_printf(const char *format, ...)
 	int		len;
 	int		i;
 
-	if (!format)
+	if (format == NULL)
 		return (-1);
 	i = 0;
 	len = 0;
