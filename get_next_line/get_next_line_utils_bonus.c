@@ -1,0 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/08 16:18:49 by nafarid           #+#    #+#             */
+/*   Updated: 2024/12/11 14:03:02 by nafarid          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line_bonus.h"
+
+int	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
+}
+
+int	ft_strchr(char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s && s[i])
+	{
+		if (s[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+char	*ft_strjoin(char *buffer, char *line)
+{
+	size_t	i;
+	size_t	j;
+	char	*str;
+
+	i = 0;
+	j = 0;
+	if (!buffer)
+	{
+		buffer = (char *)malloc(1);
+		buffer[0] = '\0';
+	}
+	if (!buffer || !line)
+		return (NULL);
+	str = malloc(sizeof(char) * (ft_strlen(buffer) + ft_strlen(line) + 1));
+	if (str == NULL)
+		return (NULL);
+	while (buffer[i])
+	{
+		str[i] = buffer[i];
+		i++;
+	}
+	while (line[j])
+		str[i++] = line[j++];
+	str[i] = '\0';
+	return (free(buffer), str);
+}
