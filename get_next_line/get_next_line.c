@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:54:05 by nafarid           #+#    #+#             */
-/*   Updated: 2024/12/17 10:33:20 by nafarid          ###   ########.fr       */
+/*   Updated: 2024/12/19 14:07:27 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static char	*get_line(char *buffer)
 	}
 	if (buffer[i] == '\n')
 	{
-		str[i] = buffer[i];
+		str[i] = '\n';
 		i++;
 	}
 	str[i] = '\0';
@@ -98,11 +98,12 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = ft_read_line(fd, buffer);
-	if (!buffer)
+	if (buffer == NULL)
 		return (NULL);
 	if (buffer[0] == '\0')
 	{
 		free(buffer);
+		buffer = NULL;
 		return (NULL);
 	}
 	line = get_line(buffer);
@@ -112,17 +113,17 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// int main()
-// {
-//     int fd = open("test.txt",O_RDONLY);
-//     char *l;
-//     int i = 1;
+int main()
+{
+    int fd = open("test.txt",O_RDONLY);
+    char *l;
+    int i = 1;
 
-//     while((l = get_next_line(fd))!=NULL)
-//     {
-//         printf("next line :%d %s",i,l);
-//         free(l);
-//         i++;
-//     }
-//     close(fd);
-// }
+    while((l = get_next_line(fd))!=NULL)
+    {
+        printf("next line :%d %s",i,l);
+        free(l);
+        i++;
+    }
+    close(fd);
+}

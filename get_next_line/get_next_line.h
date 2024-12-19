@@ -6,14 +6,14 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:54:11 by nafarid           #+#    #+#             */
-/*   Updated: 2024/12/17 10:11:44 by nafarid          ###   ########.fr       */
+/*   Updated: 2024/12/19 14:07:20 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 2147483647
 # endif
 
 # include <stdlib.h>

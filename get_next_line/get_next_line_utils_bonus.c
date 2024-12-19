@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 16:18:49 by nafarid           #+#    #+#             */
-/*   Updated: 2024/12/11 14:03:02 by nafarid          ###   ########.fr       */
+/*   Updated: 2024/12/19 13:11:00 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ char	*ft_strjoin(char *buffer, char *line)
 	j = 0;
 	if (!buffer)
 	{
-		buffer = (char *)malloc(1);
+		buffer = malloc(1);
 		buffer[0] = '\0';
 	}
 	if (!buffer || !line)
 		return (NULL);
-	str = malloc(sizeof(char) * (ft_strlen(buffer) + ft_strlen(line) + 1));
+	str = malloc(ft_strlen(buffer) + ft_strlen(line) + 1);
 	if (str == NULL)
 		return (NULL);
 	while (buffer[i])
