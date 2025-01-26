@@ -1,38 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/02 15:13:47 by nafarid           #+#    #+#             */
+/*   Updated: 2025/01/26 11:53:09 by nafarid          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf/ft_printf.h"
+#include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <signal.h>
 
-void bitatoi(int s)
+static void	ft_bit(int p)
 {
-    static int bit = 0;
-    static int i = 0;
+	static int				bit;
+	static unsigned char	i;
 
-    if (s == SIGUSR1)
-        i = i | (1 << (7 - bit)); 
-    bit++;
-
-    if (bit == 8)
-    {
-        printf("%c", i);  
-        i = 0;  
-        bit = 0; 
-    }
+	if (p == SIGUSR1)
+		i = i | (1 << (7 - bit));
+	bit++;
+	if (bit == 8)
+	{
+		write(1, &i, 1);
+		bit = 0;
+		i = 0;
+	}
 }
 
-int main(int ac, char **av)
+int	main(int argc, char **argv)
 {
-    int pid;
-    (void)av;
+	struct sigaction	sa;
 
-    pid = getpid();
-    printf("%d\n", pid);
-    if (ac == 1) {
-        signal(SIGUSR1, bitatoi);
-        signal(SIGUSR2, bitatoi);
-
-        while (1) {
-            pause();
-        }
-    }
-    return 0;
+	(void)argv;
+	ft_printf("/* *******************************************************/\n");
+	ft_printf("/*                                   :::      ::::::::   */\n");
+	ft_printf("/*   Welcome To Pasquale's Server! :+:      :+:    :+:   */\n");
+	ft_printf("/*                               +:+ +:+         +:+     */\n");
+	ft_printf("/*   By:   farid               +#+  +:+       +#+        */\n");
+	ft_printf("/*                           +#+#+#+#+#+   +#+           */\n");
+	ft_printf("/*                                #+#    #+#             */\n");
+	ft_printf("/*                               ###   ########          */\n");
+	ft_printf("      My Server PID is %d                        \n", getpid());
+	ft_printf("/* ***************************************************** */\n");
+	if (argc == 1)
+	{
+		sa.sa_handler = ft_bit;
+		sa.sa_flags = 0;
+		sigaction(SIGUSR1, &sa, 0);
+		sigaction(SIGUSR2, &sa, 0);
+		while (1)
+		{
+			pause();	
+		}
+	}
+	return (0);
 }
