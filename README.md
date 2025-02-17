@@ -11,3 +11,7 @@
 ## GET_NEXT_LINE
 
 - [x] [GET_NEXT_LINE](./get_next_line)
+
+## MINITALK
+
+- [x] [MINITALK](./minitalk)
