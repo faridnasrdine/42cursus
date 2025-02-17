@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:07:46 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/16 17:42:10 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/17 13:51:33 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,4 @@ void	sort_stack(t_node **stack_a, t_node **stack_b)
 		sort_five(stack_a, stack_b);
 	else if (!check_arranging(*stack_a))
 		radix_sort(stack_a, stack_b);
-	else
-	{
-		ft_free(stack_a);
-		ft_free(stack_b);
-	}
 }

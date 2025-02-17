@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 11:47:58 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/16 17:41:37 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/17 13:41:01 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,31 +71,32 @@ char	**free_split(char **split)
 	return (NULL);
 }
 
-char	**ft_split(char const *s)
+char **ft_split(char const *s)
 {
-	size_t	i;
-	size_t	j;
-	size_t	start;
-	char	**result;
+    char **result;
 
-	if (!s)
-		return (NULL);
-	result = malloc(sizeof(char *) * (count_word(s) + 1));
-	if (!result)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		while (white_space(s[i]))
-			i++;
-		start = i;
-		while (s[i] && !white_space(s[i]))
-			i++;
-		if (start < i)
-			result[j++] = word_copy(s, start, i);
-		if (result[j - 1] == NULL)
-			return (free_split(result));
-	}
-	return (result[j] = NULL, result);
+	size_t (i), j, start;
+    if (!s)
+        return NULL;
+    result = malloc(sizeof(char *) * (count_word(s) + 1));
+    if (!result)
+        return NULL;
+    i = 0;
+    j = 0;
+    while (s[i])
+    {
+        while (white_space(s[i]))
+            i++;
+        start = i;
+        while (s[i] && !white_space(s[i]))
+            i++;
+        if (start < i)
+        {
+            result[j] = word_copy(s, start, i);
+            if (result[j] == NULL)
+                return(free_split(result), NULL);
+            j++;
+        }
+    }
+    return (result[j] = NULL, result);
 }
