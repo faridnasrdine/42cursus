@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:54:23 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/17 15:15:17 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/17 18:19:48 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,15 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	stack_a = check_nub_arg(ac, av);
 	if (!stack_a)
-		return (0);
-	if (check_duplicate(stack_a))
+		return (1);
+	if (!check_duplicate(stack_a))
 	{
-		set_index(stack_a, list_size(stack_a));
-		sort_stack(&stack_a, &stack_b);
-		ft_free(&stack_a);
-		ft_free(&stack_b);
+		print_error(&stack_a, &stack_b);
+		return (1);
 	}
-	else
-	{
-		ft_free(&stack_a);
-		print_error();
-	}
+	set_index(stack_a, list_size(stack_a));
+	sort_stack(&stack_a, &stack_b);
+	ft_free(&stack_a);
+	ft_free(&stack_b);
 	return (0);
 }

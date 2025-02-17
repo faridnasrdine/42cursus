@@ -52,8 +52,7 @@ void	set_index(t_node *head, int link_size)
 		tmp = head;
 		while (tmp)
 		{
-			if (!tmp->index && (biggest == NULL
-					|| tmp->data > biggest->data))
+			if (!tmp->index && (biggest == NULL || tmp->data > biggest->data))
 				biggest = tmp;
 			tmp = tmp->next;
 		}

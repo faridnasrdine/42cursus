@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:54:38 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/17 15:07:12 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/17 18:18:16 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ int	list_size(t_node *head)
 	return (size);
 }
 
-void	print_error(void)
+void	print_error(t_node **a, t_node **b)
 {
+	ft_free(a);
+	ft_free(b);
 	write(2, "Error\n", 6);
 	exit(1);
 }

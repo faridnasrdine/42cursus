@@ -60,7 +60,7 @@ void	radix_sort(t_node **stack_a, t_node **stack_b)
 		while (j <= biggest_nbr)
 		{
 			if (((*stack_a)->index >> i) & 1)
-				ra (stack_a);
+				ra(stack_a);
 			else
 				pb(stack_a, stack_b);
 			j++;

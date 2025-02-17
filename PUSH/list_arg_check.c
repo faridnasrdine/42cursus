@@ -6,49 +6,57 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:54:02 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/17 15:10:02 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/17 18:24:42 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	list_arg(char **av, t_node **stack_a)
+static int	process_argument(const char *arg, t_node **stack)
 {
-	int	i;
+	char	**tokens;
+	t_node	*new_node;
 
-	i = 0;
-	while (av[i] != NULL)
+	int (j), nb;
+	tokens = ft_split(arg);
+	if (!tokens || !*tokens)
+		return (free(tokens), print_error(stack, NULL), 1);
+	j = 0;
+	while (tokens[j])
 	{
-		ft_add_back(stack_a, createt_node(ft_atoi(av[i])));
-		i++;
+		nb = ft_atoi(tokens[j]);
+		if (nb > INT_MAX || nb < INT_MIN)
+			print_error(stack, NULL);
+		new_node = createt_node(nb);
+		if (!new_node)
+		{
+			free_split(tokens);
+			ft_free(stack);
+			return (-1);
+		}
+		ft_add_back(stack, new_node);
+		j++;
 	}
+	free_split(tokens);
+	return (0);
 }
 
 t_node	*check_nub_arg(int ac, char **av)
 {
-	t_node	*stack_a;
+	t_node	*stack;
 	int		i;
-	t_node	*tmp;
 
-	stack_a = NULL;
+	stack = NULL;
 	i = 1;
-	if (ac > 1)
+	while (i < ac)
 	{
-		while (i < ac)
+		if (check_args(&av[i]))
 		{
-			if (check_args(&av[i]))
-			{
-				tmp = check_cout(av[i]);
-				while (tmp)
-				{
-					ft_add_back(&stack_a, createt_node(tmp->data));
-					tmp = tmp->next;
-				}
-			}
-			else
-				print_error();
-			i++;
+			process_argument(av[i], &stack);
 		}
+		else
+			print_error(&stack, NULL);
+		i++;
 	}
-	return (stack_a);
+	return (stack);
 }

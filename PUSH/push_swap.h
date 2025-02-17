@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:54:26 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/16 17:33:01 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/17 18:18:34 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				check_duplicate(t_node *stack_a);
 t_node			*check_cout(char *av);
 int				check_args(char **av);
 t_node			*check_nub_arg(int ac, char **av);
-void			print_error(void);
+void			print_error(t_node **a, t_node **b);
 void			ft_free(t_node **str);
 void			list_arg(char **av, t_node **stack_a);
 

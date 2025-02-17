@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:19:32 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/16 18:52:04 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/17 18:23:31 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,5 @@ int	ft_atoi(const char *nptr)
 		result = (result * 10) + (nptr[i] - 48);
 		i++;
 	}
-	if((result * sign) > INT_MAX || (result * sign) < INT_MIN)
-		print_error();
 	return (result * sign);
 }
