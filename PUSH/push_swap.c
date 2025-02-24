@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:54:23 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/17 18:19:48 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/19 14:28:46 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 		return (1);
 	if (!check_duplicate(stack_a))
 	{
-		print_error(&stack_a, &stack_b);
+		print_error(NULL, &stack_a, &stack_b);
 		return (1);
 	}
 	set_index(stack_a, list_size(stack_a));

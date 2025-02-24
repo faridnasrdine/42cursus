@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:54:29 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/16 17:42:05 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/18 15:56:11 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,32 @@ void	set_index(t_node *head, int link_size)
 		}
 		if (biggest)
 			biggest->index = link_size;
+	}
+}
+
+void	radix_sort(t_node **stack_a, t_node **stack_b)
+{
+	int	biggest_nbr;
+	int	max_bits;
+	int	i;
+	int	j;
+
+	biggest_nbr = find_biggest(*stack_a);
+	max_bits = find_bits(biggest_nbr);
+	i = 0;
+	while (i < max_bits)
+	{
+		j = 0;
+		while (j <= biggest_nbr)
+		{
+			if (((*stack_a)->index >> i) & 1)
+				ra(stack_a);
+			else
+				pb(stack_a, stack_b);
+			j++;
+		}
+		while (*stack_b)
+			pa(stack_a, stack_b);
+		i++;
 	}
 }

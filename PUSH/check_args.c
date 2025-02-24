@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:53:19 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/17 18:19:29 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/19 14:28:18 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	check_alpha(char **av)
 		{
 			if (is_alpha(av[i][j]) == 1)
 			{
-				print_error(NULL, NULL);
+				print_error(NULL, NULL, NULL);
 			}
 			j++;
 		}

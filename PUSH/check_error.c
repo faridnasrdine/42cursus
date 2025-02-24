@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:53:55 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/16 17:41:25 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/19 14:46:13 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int	check_error(char **argv, int i, int j)
 				j++;
 				if (argv[i][j] == '\0')
 					break ;
-				if (!digit(argv[i][j]) && !space(argv[i][j]))
+				if ((!digit(argv[i][j]) && !space(argv[i][j]))
+					|| sign(argv[i][j + 1]))
 					return (0);
 			}
 			j++;

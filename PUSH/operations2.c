@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:35:03 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/16 17:41:53 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/18 17:04:25 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,4 @@ void	rra(t_node **stack_a)
 {
 	rotate_reverse(&(*stack_a));
 	write(1, "rra\n", 4);
-}
-
-void	rrb(t_node **stack_b)
-{
-	rotate_reverse(&(*stack_b));
-	write(1, "rrb\n", 4);
-}
-
-void	rrr(t_node **stack_a, t_node **stack_b)
-{
-	rotate_reverse(&(*stack_a));
-	rotate_reverse(&(*stack_b));
-	write(1, "rrr\n", 4);
 }

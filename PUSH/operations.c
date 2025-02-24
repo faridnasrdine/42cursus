@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:54:05 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/16 17:41:45 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/18 17:11:50 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,6 @@ void	ra(t_node **stack_a)
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_node **stack_b)
-{
-	t_node	*tmp;
-	t_node	*last;
-
-	if (*stack_b == NULL || (*stack_b)->next == NULL)
-		return ;
-	tmp = *stack_b;
-	*stack_b = (*stack_b)->next;
-	tmp->next = NULL;
-	last = *stack_b;
-	while (last->next != NULL)
-	{
-		last = last->next;
-	}
-	last->next = tmp;
-	write(1, "rb\n", 3);
-}
-
 void	sa(t_node **stack_a)
 {
 	t_node	*tmp;
@@ -63,32 +44,28 @@ void	sa(t_node **stack_a)
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_node **stack_b)
+void	pa(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*tmp;
 
-	if (*stack_b == NULL || (*stack_b)->next == NULL)
+	if (*stack_b == NULL)
 		return ;
 	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;
-	tmp->next = (*stack_b)->next;
-	(*stack_b)->next = tmp;
-	write(1, "sb\n", 3);
+	tmp->next = *stack_a;
+	*stack_a = tmp;
+	write(1, "pa\n", 3);
 }
 
-void	ss(t_node **stack_a, t_node **stack_b)
+void	pb(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*tmp;
 
-	if (!*stack_a || !*stack_b || !((*stack_a)->next) || !((*stack_b)->next))
+	if (*stack_a == NULL)
 		return ;
 	tmp = *stack_a;
 	*stack_a = (*stack_a)->next;
-	tmp->next = (*stack_a)->next;
-	(*stack_a)->next = tmp;
-	tmp = *stack_b;
-	*stack_b = (*stack_b)->next;
-	tmp->next = (*stack_b)->next;
-	(*stack_b)->next = tmp;
-	write(1, "ss\n", 3);
+	tmp->next = *stack_b;
+	*stack_b = tmp;
+	write(1, "pb\n", 3);
 }
