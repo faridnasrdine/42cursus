@@ -6,13 +6,13 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:41:56 by nafarid           #+#    #+#             */
-/*   Updated: 2024/12/19 13:18:49 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/25 17:56:46 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *s)
+int	t_strlen(const char *s)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_strchr(char *s, char c)
+int	t_strchr(char *s, char c)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ int	ft_strchr(char *s, char c)
 	return (-1);
 }
 
-char	*ft_strjoin(char *buffer, char *line)
+char	*t_strjoin(char *buffer, char *line)
 {
 	size_t	i;
 	size_t	j;
@@ -51,7 +51,7 @@ char	*ft_strjoin(char *buffer, char *line)
 	}
 	if (!buffer || !line)
 		return (NULL);
-	str = malloc(ft_strlen(buffer) + ft_strlen(line) + 1);
+	str = malloc(t_strlen(buffer) + t_strlen(line) + 1);
 	if (str == NULL)
 		return (NULL);
 	while (buffer[i])

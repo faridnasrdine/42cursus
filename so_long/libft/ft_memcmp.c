@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utlis.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 15:24:48 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 17:42:43 by nafarid          ###   ########.fr       */
+/*   Created: 2024/10/24 16:26:39 by nafarid           #+#    #+#             */
+/*   Updated: 2024/10/30 15:09:19 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	write(1, str, ft_strlen(str));
-	exit(1);
-}
-
-int	ft_linelen(char **str)
-{
-	int	i;
+	size_t				i;
+	const unsigned char	*p1;
+	const unsigned char	*p2;
 
 	i = 0;
-	while (str[i] != NULL)
+	p1 = s1;
+	p2 = s2;
+	while (i < n)
+	{
+		if (p1[i] != p2[i])
+		{
+			return (p1[i] - p2[i]);
+		}
 		i++;
-	return (i);
+	}
+	return (0);
 }
-
-// void filed_elements(t_map *map)
+// int	main(void)
 // {
-//     // int x = 0;
+// 	char	p[] = "hlato";
+// 	char	d[] = "helko";
 
-//     // while (map->map[x] != NULL)
-//     // {
-//     //     free(map->map[x]);
-//     //     x++;
-//     // }
-//     // free(map->map);
-//     ft_error("Error\nInvalid elements in map\n");
+// 	printf("%d\n", ft_memcmp(p, d, 5));
+// 	printf("%d\n", memcmp(p, d, 5));
 // }

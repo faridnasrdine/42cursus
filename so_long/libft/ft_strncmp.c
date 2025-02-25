@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utlis.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 15:24:48 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 17:42:43 by nafarid          ###   ########.fr       */
+/*   Created: 2024/10/24 11:19:56 by nafarid           #+#    #+#             */
+/*   Updated: 2024/11/05 12:58:06 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	write(1, str, ft_strlen(str));
-	exit(1);
-}
+	size_t	i;
 
-int	ft_linelen(char **str)
-{
-	int	i;
-
+	if (n == 0)
+		return (0);
 	i = 0;
-	while (str[i] != NULL)
+	while (i < n && (s1[i] || s2[i]))
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+		{
+			return ((unsigned char )s1[i] - (unsigned char )s2[i]);
+		}
 		i++;
-	return (i);
+	}
+	return (0);
 }
-
-// void filed_elements(t_map *map)
+// int	main(void)
 // {
-//     // int x = 0;
-
-//     // while (map->map[x] != NULL)
-//     // {
-//     //     free(map->map[x]);
-//     //     x++;
-//     // }
-//     // free(map->map);
-//     ft_error("Error\nInvalid elements in map\n");
+// 	char p[] = "helao";
+// 	char d[] = "helko";
+// 	printf("%d", ft_strncmp(p, d, 4));
 // }

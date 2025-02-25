@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:54:05 by nafarid           #+#    #+#             */
-/*   Updated: 2024/12/19 13:13:03 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/02/25 17:36:56 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*ft_read_line(int fd, char *buffer)
 	line = malloc((size_t)BUFFER_SIZE + 1);
 	if (!line)
 		return (NULL);
-	while (ft_strchr(buffer, '\n') == -1)
+	while (t_strchr(buffer, '\n') == -1)
 	{
 		rd_bytes = read(fd, line, BUFFER_SIZE);
 		if (rd_bytes == -1)
@@ -32,7 +32,7 @@ static char	*ft_read_line(int fd, char *buffer)
 		if (rd_bytes == 0)
 			break ;
 		line[rd_bytes] = '\0';
-		buffer = ft_strjoin(buffer, line);
+		buffer = t_strjoin(buffer, line);
 	}
 	free(line);
 	return (buffer);
@@ -80,7 +80,7 @@ static char	*get_new_str(char *buffer)
 		return (NULL);
 	}
 	i++;
-	str = malloc(ft_strlen(buffer) - i + 1);
+	str = malloc(t_strlen(buffer) - i + 1);
 	if (!str)
 		return (NULL);
 	while (buffer[i])

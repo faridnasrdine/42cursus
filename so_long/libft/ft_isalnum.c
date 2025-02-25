@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 10:54:11 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 17:36:26 by nafarid          ###   ########.fr       */
+/*   Created: 2024/10/22 11:30:47 by nafarid           #+#    #+#             */
+/*   Updated: 2024/10/31 10:28:44 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
-
-char	*get_next_line(int fd);
-int		t_strlen(const char *s);
-int		t_strchr(char *s, char c);
-char	*t_strjoin(char *s1, char *s2);
-
-#endif
+int	ft_isalnum(int c)
+{
+	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90) || (c >= 48 && c <= 57))
+	{
+		return (1);
+	}
+	else
+		return (0);
+}

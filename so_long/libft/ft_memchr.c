@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utlis.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 15:24:48 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 17:42:43 by nafarid          ###   ########.fr       */
+/*   Created: 2024/10/24 13:59:47 by nafarid           #+#    #+#             */
+/*   Updated: 2024/10/28 16:31:03 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	write(1, str, ft_strlen(str));
-	exit(1);
-}
+	size_t				i;
+	const unsigned char	*p;
 
-int	ft_linelen(char **str)
-{
-	int	i;
-
+	p = s;
 	i = 0;
-	while (str[i] != NULL)
+	while (i < n)
+	{
+		if (p[i] == (unsigned char)c)
+		{
+			return ((void *)(p + i));
+		}
 		i++;
-	return (i);
+	}
+	return (0);
 }
-
-// void filed_elements(t_map *map)
+// int	main(void)
 // {
-//     // int x = 0;
+// 	char	s[] = "helloooo";
+// 	char	*result;
 
-//     // while (map->map[x] != NULL)
-//     // {
-//     //     free(map->map[x]);
-//     //     x++;
-//     // }
-//     // free(map->map);
-//     ft_error("Error\nInvalid elements in map\n");
+// 	result = ft_memchr(s, 'o', 5);
+// 	printf("%s \n", result);
 // }

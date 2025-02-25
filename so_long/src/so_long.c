@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utlis.c                                            :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 15:24:48 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 17:42:43 by nafarid          ###   ########.fr       */
+/*   Created: 2025/02/25 18:09:31 by nafarid           #+#    #+#             */
+/*   Updated: 2025/02/25 20:25:39 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_error(char *str)
+int main(int ac, char **av)
 {
-	write(1, str, ft_strlen(str));
-	exit(1);
+    t_map map;
+    if(ac != 2)
+        ft_error("Error\n");
+    check_file_is_valide(av[1]);
+    map.map = get_map(av[1]);
+    if(map.map != NULL)
+    {
+        check_map_is_valid(&map);
+    }
 }
-
-int	ft_linelen(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != NULL)
-		i++;
-	return (i);
-}
-
-// void filed_elements(t_map *map)
-// {
-//     // int x = 0;
-
-//     // while (map->map[x] != NULL)
-//     // {
-//     //     free(map->map[x]);
-//     //     x++;
-//     // }
-//     // free(map->map);
-//     ft_error("Error\nInvalid elements in map\n");
-// }

@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utlis.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 15:24:48 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 17:42:43 by nafarid          ###   ########.fr       */
+/*   Created: 2024/10/23 09:45:00 by nafarid           #+#    #+#             */
+/*   Updated: 2024/11/04 21:52:27 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	write(1, str, ft_strlen(str));
-	exit(1);
-}
+	size_t		i;
+	char		*dst;
+	const char	*ptr;
 
-int	ft_linelen(char **str)
-{
-	int	i;
-
+	if (!src && !dest)
+		return (NULL);
 	i = 0;
-	while (str[i] != NULL)
+	ptr = (const char *)src;
+	dst = (char *)dest;
+	while (i < n)
+	{
+		dst[i] = ptr[i];
 		i++;
-	return (i);
+	}
+	return (dest);
 }
-
-// void filed_elements(t_map *map)
+// #include <stdio.h>
+// int main()
 // {
-//     // int x = 0;
-
-//     // while (map->map[x] != NULL)
-//     // {
-//     //     free(map->map[x]);
-//     //     x++;
-//     // }
-//     // free(map->map);
-//     ft_error("Error\nInvalid elements in map\n");
+// 	char p[] = "hello ";
+// 	char d[10];
+// 	printf("%s\n", ft_memcpy(d, p, 4));
 // }

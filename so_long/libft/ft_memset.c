@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 10:54:11 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 17:36:26 by nafarid          ###   ########.fr       */
+/*   Created: 2024/10/22 11:30:57 by nafarid           #+#    #+#             */
+/*   Updated: 2024/11/06 21:19:15 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
+void	*ft_memset(void *dest, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*ptr;
+	unsigned char	value;
 
-char	*get_next_line(int fd);
-int		t_strlen(const char *s);
-int		t_strchr(char *s, char c);
-char	*t_strjoin(char *s1, char *s2);
-
-#endif
+	value = (unsigned char)c;
+	ptr = dest;
+	i = 0;
+	while (i < n)
+	{
+		ptr[i] = value;
+		i++;
+	}
+	return (ptr);
+}

@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 10:54:11 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 17:36:26 by nafarid          ###   ########.fr       */
+/*   Created: 2024/10/22 11:30:51 by nafarid           #+#    #+#             */
+/*   Updated: 2024/10/25 21:19:35 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
-
-char	*get_next_line(int fd);
-int		t_strlen(const char *s);
-int		t_strchr(char *s, char c);
-char	*t_strjoin(char *s1, char *s2);
-
-#endif
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+	{
+		return (1);
+	}
+	else
+		return (0);
+}

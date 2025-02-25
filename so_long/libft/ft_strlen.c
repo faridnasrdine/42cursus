@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utlis.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 15:24:48 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 17:42:43 by nafarid          ###   ########.fr       */
+/*   Created: 2024/10/22 11:30:54 by nafarid           #+#    #+#             */
+/*   Updated: 2024/10/28 16:31:21 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+size_t	ft_strlen(const char *c)
 {
-	write(1, str, ft_strlen(str));
-	exit(1);
-}
-
-int	ft_linelen(char **str)
-{
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (str[i] != NULL)
+	while (c[i])
 		i++;
 	return (i);
 }
-
-// void filed_elements(t_map *map)
+// int main()
 // {
-//     // int x = 0;
-
-//     // while (map->map[x] != NULL)
-//     // {
-//     //     free(map->map[x]);
-//     //     x++;
-//     // }
-//     // free(map->map);
-//     ft_error("Error\nInvalid elements in map\n");
+//     char s[] = "hello";
+//     printf("%d\n", ft_strlen(s));
 // }

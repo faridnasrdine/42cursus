@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utlis.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 15:24:48 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 17:42:43 by nafarid          ###   ########.fr       */
+/*   Created: 2024/10/22 16:27:57 by nafarid           #+#    #+#             */
+/*   Updated: 2024/10/28 16:31:40 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	write(1, str, ft_strlen(str));
-	exit(1);
-}
+	size_t	i;
+	size_t	len;
 
-int	ft_linelen(char **str)
-{
-	int	i;
-
+	len = ft_strlen(src);
+	if (size == 0)
+		return (len);
 	i = 0;
-	while (str[i] != NULL)
+	while (src[i] && i < size - 1)
+	{
+		dst[i] = src[i];
 		i++;
-	return (i);
+	}
+	dst[i] = '\0';
+	return (len);
 }
-
-// void filed_elements(t_map *map)
+// int	main(void)
 // {
-//     // int x = 0;
+// 	char	p[] = "hello   ";
+// 	char	d[3];
 
-//     // while (map->map[x] != NULL)
-//     // {
-//     //     free(map->map[x]);
-//     //     x++;
-//     // }
-//     // free(map->map);
-//     ft_error("Error\nInvalid elements in map\n");
+// 	ft_strlcpy(d, p, 2);
+// 	printf("%d\n", ft_strlcpy(d, p, 3));
+// 	printf("%s\n", d);
 // }
