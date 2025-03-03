@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 18:04:00 by nafarid           #+#    #+#             */
-/*   Updated: 2025/03/01 17:22:12 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/03/01 17:58:55 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	**get_map(char *map)
 {
-	char *(line), **(fmap), *(all_line);
+	char *(line), **(fmap), *(all_line), *(tmp);
 	int (fd) = open(map, O_RDONLY);
 	if (fd < 0)
 		ft_error("Error\nCould not open map file\n");
@@ -27,16 +27,16 @@ char	**get_map(char *map)
 			free(line);
 			break ;
 		}
-		all_line = ft_strjoin(all_line, line);
+		tmp = ft_strjoin(all_line, line);
+		free(all_line);
+		all_line = tmp;
 		free(line);
 		line = get_next_line(fd);
 	}
-	close(fd);
 	if (all_line[0] == '\0' || all_line[ft_strlen(all_line) - 1] == '\n')
 	{
 		free(all_line);
 		ft_error("Error\nMap file is empty or empty line\n");
 	}
-	fmap = ft_split(all_line, '\n');
-	return (free(all_line), fmap);
+	return ((fmap = ft_split(all_line, '\n')), free(all_line), fmap);
 }

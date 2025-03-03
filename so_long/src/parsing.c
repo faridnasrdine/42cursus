@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:22:50 by nafarid           #+#    #+#             */
-/*   Updated: 2025/02/25 18:20:37 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/03/02 16:50:22 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 void check_map_is_valid(t_map *map)
 {
-    check_is_rec(map);
+    // Check basic structure validations
+    check_is_rectangular(map);
     check_is_closed(map);
     check_elements(map);
+    // Validate that all collectibles (C) and the exit (E)
+    // are reachable from the player's position
+    if (map_is_valid(map->map) == 0)
+        ft_error("Error\nMap_is_not_valide\n");
+    else
+        printf("Map is valid\n");
 }
 
-void check_is_rec(t_map *map)
+
+void check_is_rectangular(t_map *map)
 {
     int x;
     int y;

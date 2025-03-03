@@ -6,7 +6,7 @@
 #    By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 14:42:37 by nafarid           #+#    #+#              #
-#    Updated: 2025/02/25 17:56:11 by nafarid          ###   ########.fr        #
+#    Updated: 2025/03/02 16:37:05 by nafarid          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 SRC = src/check_file.c src/get_map.c src/parsing.c src/so_long.c \
 	src/utlis.c get_next_line/get_next_line.c \
-	get_next_line/get_next_line_utils.c
+	get_next_line/get_next_line_utils.c src/flood_fill.c
 OBJS = $(SRC:.c=.o)
 
 #-------------------------Constant strings--------------------------------------

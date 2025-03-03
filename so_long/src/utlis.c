@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:24:48 by nafarid           #+#    #+#             */
-/*   Updated: 2025/03/01 17:22:04 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/03/02 16:33:07 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,16 @@ int	ft_linelen(char **str)
 	return (i);
 }
 
-// void filed_elements(t_map *map)
-// {
-//     // int x = 0;
+void ft_free(char **str)
+{
+	int i;
 
-//     // while (map->map[x] != NULL)
-//     // {
-//     //     free(map->map[x]);
-//     //     x++;
-//     // }
-//     // free(map->map);
-//     ft_error("Error\nInvalid elements in map\n");
-// }
-
+	i = 0;
+	while(str[i] != NULL)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str[i]);
+}
 
