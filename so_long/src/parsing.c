@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:22:50 by nafarid           #+#    #+#             */
-/*   Updated: 2025/03/02 16:50:22 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:41:04 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 void check_map_is_valid(t_map *map)
 {
-    // Check basic structure validations
     check_is_rectangular(map);
     check_is_closed(map);
     check_elements(map);
-    // Validate that all collectibles (C) and the exit (E)
-    // are reachable from the player's position
-    if (map_is_valid(map->map) == 0)
-        ft_error("Error\nMap_is_not_valide\n");
-    else
-        printf("Map is valid\n");
+    map_is_valid(map);
+    
 }
 
 
@@ -46,7 +41,10 @@ void check_is_rectangular(t_map *map)
         if (tole != 0)
         {
             if (tole != x)
+            {
+                ft_free(map->map);
                 ft_error("Error\nMap is not rectangular\n");
+            }
         }
         else
             tole = x;
@@ -73,11 +71,17 @@ void check_is_closed(t_map *map)
 
     i = ft_linelen(map->map) - 1;
     if (check_line(map->map[0]) == 0 || check_line(map->map[i]) == 0)
+    {
+        ft_free(map->map);
         ft_error("Error\nMap is not closed\n");
+    }
     while (i)
     {
         if (map->map[i][0] != '1' || map->map[i][ft_strlen(map->map[i]) - 1] != '1')
+        {
+            ft_free(map->map);
             ft_error("Error\nMap is not closed\n");
+        }
         i--;
     }
 }
@@ -99,11 +103,17 @@ void check_elements(t_map *map)
             else if (map->map[var.y][var.x] == 'C')
                 var.c++;
             else if (map->map[var.y][var.x] != '1' && map->map[var.y][var.x] != '0')
+            {
+                ft_free(map->map);
                 ft_error("Error\nInvalid elements in map\n");
+            }
             var.x++;
         }
         var.y--;
     }
     if (var.p != 1 || var.c == 0 || var.e != 1)
+    {
+        ft_free(map->map);
         ft_error("Error\nInvalid elements in map\n");
+    }
 }

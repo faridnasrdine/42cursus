@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:24:48 by nafarid           #+#    #+#             */
-/*   Updated: 2025/03/02 16:33:07 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:41:00 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	ft_linelen(char **str)
 
 void ft_free(char **str)
 {
-	int i;
-
-	i = 0;
-	while(str[i] != NULL)
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str[i]);
+    int i = 0;
+    if (!str)
+        return;
+    while (str[i])
+    {
+        free(str[i]);
+        i++;
+    }
+    free(str);
 }
 
