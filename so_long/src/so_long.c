@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 18:09:31 by nafarid           #+#    #+#             */
-/*   Updated: 2025/03/06 01:44:30 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/03/10 00:01:58 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 void game_loop(t_map *map)
 {
-    int map_w;
-    int map_h;
     int map_x;
     int map_y;
     int x;
@@ -24,13 +22,11 @@ void game_loop(t_map *map)
     
     y = 0;
     map_y = 0;
-    map_h = map->height;
-    map_w = map->width;
-    while(map_y < map_h)
+    while(map_y < map->height)
     {   
         x = 0;
         map_x = 0;
-        while(map_x < map_w)
+        while(map_x < map->width)
         {
             put_image(map->map[map_y][map_x], x, y, map);
             map_x++;

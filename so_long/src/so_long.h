@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 18:08:56 by nafarid           #+#    #+#             */
-/*   Updated: 2025/03/06 00:05:29 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/03/09 02:22:37 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void	check_file_is_valide(char *file);
 char	**get_map(char *map);
 void ft_free(char **str);
 void  map_is_valid(t_map *map);
+void ft_image(t_map *map, int x, int y, char *image);
 #endif

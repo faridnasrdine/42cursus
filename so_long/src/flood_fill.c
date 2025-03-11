@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:31:25 by nafarid           #+#    #+#             */
-/*   Updated: 2025/03/05 16:41:08 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/03/11 00:40:37 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,6 @@ static int check_all_col(char **new_map, t_map *map)
     return (0);
 }
 
-static void cleanup_map(t_map *map, char **new_map)
-{
-    
-    ft_free(new_map);
-    ft_free(map->map);
-
-}
-
 void map_is_valid(t_map *map)
 {
     int x, y;
@@ -110,10 +102,10 @@ void map_is_valid(t_map *map)
     flood_fill(new_map, start_x, start_y, map);
     if (check_all_col(new_map, map))
     {
-        cleanup_map(map, new_map);
+        ft_free(new_map);
         ft_error("Error\nInvalid map! Collectibles are not accessible!\n");
     }
-    cleanup_map(map, new_map);
+    ft_free(new_map);
     if (map->Exit != 1)
         ft_error("Error\nInvalid map! No exit or multiple exits\n");
 }
