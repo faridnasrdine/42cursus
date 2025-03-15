@@ -12,6 +12,13 @@
 
 #include "so_long.h"
 
+int key_hook(int keycode, t_map *map)
+{
+    
+    if (keycode == 2) // D key
+        move_to_right(&map);
+    return (0);
+}
 
 void game_loop(t_map *map)
 {
@@ -36,12 +43,15 @@ void game_loop(t_map *map)
         y += 64;
     }
 }
+
 void init_map(t_map *map)
 {
     map->width = ft_strlen(map->map[0]);
     map->height = ft_linelen(map->map);
     map->Exit = 0;
+    map->collect = 0;
 }
+
 int main(int ac, char **av)
 {
     t_map map;
@@ -56,7 +66,7 @@ int main(int ac, char **av)
         map.mlx = mlx_init();
         map.mlx_win = mlx_new_window(map.mlx, 64 * map.width, 64 * map.height, "so-long");
         game_loop(&map);
+        mlx_hook(map.mlx_win, 2, (1L << 0), key_hook, &map);
         mlx_loop(map.mlx);
-        
     }
 }
