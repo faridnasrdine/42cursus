@@ -14,9 +14,15 @@
 
 int key_hook(int keycode, t_map *map)
 {
-    
-    if (keycode == 2) // D key
+    printf("Key pressed: %d\n", keycode); 
+    if (keycode == 100) 
         move_to_right(&map);
+    else if (keycode == 97) 
+        move_to_left(&map);
+    else if (keycode == 119)
+        move_up(&map);
+    else if (keycode == 122)
+        move_down(&map);
     return (0);
 }
 

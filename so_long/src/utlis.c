@@ -41,3 +41,18 @@ void ft_free(char **str)
     free(str);
 }
 
+void exit_door(t_map **map)
+{
+    int i;
+
+    i = 0;
+    while((*map)->map[i])
+    {
+        free((*map)->map[i]);
+        i++;
+    }
+    free((*map)->map);
+    mlx_destroy_window((*map)->mlx, (*map)->mlx_win);
+    exit(1);
+}
+
