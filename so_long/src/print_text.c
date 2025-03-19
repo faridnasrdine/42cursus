@@ -7,7 +7,7 @@ void print_text(t_map **map)
     int     w;
     int     h;
     num = ft_itoa((*map)->movement++);
-    text = ft_strjoin("Move: ", num);
+    text = ft_strjoin("Move : ", num);
 
     (*map)->img = mlx_xpm_file_to_image((*map)->mlx, "wall.xpm", &w, &h);
     mlx_put_image_to_window((*map)->mlx, (*map)->mlx_win, (*map)->img, 0, 0);

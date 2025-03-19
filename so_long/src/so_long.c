@@ -83,7 +83,7 @@ void init_map(t_map *map)
     map->height = ft_linelen(map->map);
     map->Exit = 0;
     map->collect = 0;
-    map->movement = 0;
+    map->movement = 1;
 }
 
 int main(int ac, char **av)
@@ -101,7 +101,8 @@ int main(int ac, char **av)
         map.mlx_win = mlx_new_window(map.mlx, 64 * map.width, 64 * map.height, "so-long");
         game_loop(&map);
         mlx_hook(map.mlx_win, 2, (1L << 0), key_hook, &map);
-        mlx_hook(map.mlx_win, 2, (1L << 0), ft_exit, &map);
+        mlx_hook(map.mlx_win, 17, (1L << 0), ft_exit, &map);
+        mlx_string_put(map.mlx, map.mlx_win, 10, 15, 0xffff, "Move : 0");
         mlx_loop(map.mlx);
     }
 }
