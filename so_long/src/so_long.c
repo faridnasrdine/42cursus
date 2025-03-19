@@ -14,7 +14,7 @@
 
 int key_hook(int keycode, t_map *map)
 {
-    printf("Key pressed: %d\n", keycode); 
+    int i;
     if (keycode == 100) 
         move_to_right(&map);
     else if (keycode == 97) 
@@ -23,9 +23,36 @@ int key_hook(int keycode, t_map *map)
         move_up(&map);
     else if (keycode == 122)
         move_down(&map);
+    else if (keycode == 65307)
+    {
+        i = 0;
+        while(map->map[i])
+        {
+            free(map->map[i]);
+            i++;
+        }
+        free(map->map);
+        mlx_destroy_window(map->mlx, map->mlx_win);
+        exit(1);
+    }
     return (0);
 }
 
+int ft_exit(t_map *map)
+{
+    int i;
+
+    i = 0;
+    while(map->map[i])
+    {
+        free(map->map[i]);
+        i++;
+    }
+    free(map->map);
+    mlx_destroy_window(map->mlx, map->mlx_win);
+    exit(1);
+    return 0;
+}
 void game_loop(t_map *map)
 {
     int map_x;
@@ -56,6 +83,7 @@ void init_map(t_map *map)
     map->height = ft_linelen(map->map);
     map->Exit = 0;
     map->collect = 0;
+    map->movement = 0;
 }
 
 int main(int ac, char **av)
@@ -73,6 +101,7 @@ int main(int ac, char **av)
         map.mlx_win = mlx_new_window(map.mlx, 64 * map.width, 64 * map.height, "so-long");
         game_loop(&map);
         mlx_hook(map.mlx_win, 2, (1L << 0), key_hook, &map);
+        mlx_hook(map.mlx_win, 2, (1L << 0), ft_exit, &map);
         mlx_loop(map.mlx);
     }
 }

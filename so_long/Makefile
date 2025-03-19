@@ -13,8 +13,8 @@
 #-----------------------Sources------------------------------------------------
 
 SRC = src/check_file.c src/get_map.c src/parsing.c src/so_long.c \
-      src/utlis.c get_next_line/get_next_line.c src/put_image.c \
-      get_next_line/get_next_line_utils.c src/flood_fill.c src/mouvemont.c
+      src/utlis.c get_next_line/get_next_line.c src/put_image.c src/print_text.c \
+      get_next_line/get_next_line_utils.c src/flood_fill.c src/movement.c
 OBJS = $(SRC:.c=.o)
 
 #-------------------------Constant strings--------------------------------------

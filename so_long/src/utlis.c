@@ -41,7 +41,7 @@ void ft_free(char **str)
     free(str);
 }
 
-void exit_door(t_map **map)
+void exit_end_free(t_map **map)
 {
     int i;
 

@@ -33,6 +33,7 @@ typedef struct s_map
     int     player_x;
     int     player_y;
     int     collect;
+    int     movement;
     int     Exit;
 } 			t_map;
 
@@ -48,7 +49,7 @@ typedef struct s_var
 void move_to_left(t_map **map);
 void move_up(t_map **map);
 void move_down(t_map **map);
-void exit_door(t_map **map);
+void exit_end_free(t_map **map);
 void		check_map_is_valid(t_map *map);
 void		ft_error(char *str);
 void   put_image(char c, int x, int y, t_map *map);
@@ -62,5 +63,6 @@ void ft_free(char **str);
 void  map_is_valid(t_map *map);
 void game_loop(t_map *map);
 void move_to_right(t_map **map);
+void print_text(t_map **map);
 void ft_image(t_map *map, int x, int y, char *image);
 #endif
