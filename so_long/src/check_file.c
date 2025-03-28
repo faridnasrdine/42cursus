@@ -17,8 +17,11 @@ void	check_file_is_valide(char *file)
 	int	len;
 
 	len = ft_strlen(file);
-	if (len < 4)
-		ft_error("Error\nFile name too short");
-	if (file[len - 1] != 'r' || file[len - 2] != 'e' || file[len - 3] != 'b' || file[len - 4] != '.')
-		ft_error("Error\nFile extension must be .ber");
+	if (len < 5 || file[len - 5] == '/')
+		ft_error("Error\nFile name too short\n");
+	if (ft_strncmp(file + len - 4, ".ber", 4) != 0)
+	{
+		ft_error("Error\nFile extension must be .ber\n");
+	}
+	
 }

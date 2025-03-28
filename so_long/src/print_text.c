@@ -2,7 +2,7 @@
 
 void print_text(t_map **map)
 {
-    char *num;
+    char *num; 
     char *text;
     int     w;
     int     h;
@@ -17,6 +17,4 @@ void print_text(t_map **map)
     printf("%s\n", num);
     free(num);
     free(text);
-
-
 }

@@ -103,6 +103,7 @@ void map_is_valid(t_map *map)
     if (check_all_col(new_map, map))
     {
         ft_free(new_map);
+        ft_free(map->map);
         ft_error("Error\nInvalid map! Collectibles are not accessible!\n");
     }
     ft_free(new_map);

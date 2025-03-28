@@ -63,6 +63,8 @@ void ft_free(char **str);
 void  map_is_valid(t_map *map);
 void game_loop(t_map *map);
 void move_to_right(t_map **map);
+int ft_exit(t_map *map);
+void move_player(t_map *map, int dx, int dy);
 void print_text(t_map **map);
 void ft_image(t_map *map, int x, int y, char *image);
 #endif

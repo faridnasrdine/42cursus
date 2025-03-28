@@ -14,27 +14,16 @@
 
 int key_hook(int keycode, t_map *map)
 {
-    int i;
     if (keycode == 100) 
-        move_to_right(&map);
+        move_player(map, 1, 0); // Right
     else if (keycode == 97) 
-        move_to_left(&map);
-    else if (keycode == 119)
-        move_up(&map);
-    else if (keycode == 122)
-        move_down(&map);
-    else if (keycode == 65307)
-    {
-        i = 0;
-        while(map->map[i])
-        {
-            free(map->map[i]);
-            i++;
-        }
-        free(map->map);
-        mlx_destroy_window(map->mlx, map->mlx_win);
-        exit(1);
-    }
+        move_player(map, -1, 0); // Left
+    else if (keycode == 119) 
+        move_player(map, 0, -1); // Up
+    else if (keycode == 122) 
+        move_player(map, 0, 1); // Down
+    else if (keycode == 65307) 
+        ft_exit(map); // Exit game
     return (0);
 }
 
@@ -77,7 +66,7 @@ void game_loop(t_map *map)
     }
 }
 
-void init_map(t_map *map)
+void init_map(t_map *map) 
 {
     map->width = ft_strlen(map->map[0]);
     map->height = ft_linelen(map->map);
