@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:54:05 by nafarid           #+#    #+#             */
-/*   Updated: 2025/03/01 17:34:04 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/03/30 20:16:24 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,18 +112,3 @@ char	*get_next_line(int fd)
 	buffer = get_new_str(buffer);
 	return (line);
 }
-
-// int main()
-// {
-//     int fd = open("test.txt",O_RDONLY);
-//     char *l;
-//     int i = 1;
-
-//     while((l = get_next_line(fd))!=NULL)
-//     {
-//         printf("next line :%d %s",i,l);
-//         free(l);
-//         i++;
-//     }
-//     close(fd);
-// }

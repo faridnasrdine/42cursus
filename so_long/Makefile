@@ -6,21 +6,21 @@
 #    By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 14:42:37 by nafarid           #+#    #+#              #
-#    Updated: 2025/03/06 00:01:34 by nafarid          ###   ########.fr        #
+#    Updated: 2025/04/03 18:32:00 by nafarid          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-----------------------Sources------------------------------------------------
 
-SRC = src/check_file.c src/get_map.c src/parsing.c src/so_long.c \
-      src/utlis.c get_next_line/get_next_line.c src/put_image.c src/print_text.c \
-      get_next_line/get_next_line_utils.c src/flood_fill.c src/movement.c
+SRC = src/check_file.c src/get_map.c src/parsing.c src/so_long.c src/main.c \
+      src/utlis.c get_next_line/get_next_line.c src/put_image.c  src/movement2.c\
+      get_next_line/get_next_line_utils.c src/flood_fill.c src/movement.c src/parsing2.c
 OBJS = $(SRC:.c=.o)
 
 #-------------------------Constant strings--------------------------------------
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
-LDFLAGS = -L/home/farid/Desktop/42cursus/so_long/minilibx-linux -lmlx_Linux -lX11 -lXext -lm
+CFLAGS = -Wall -Wextra -Werror
+LDFLAGS = -L/usr/include/minilibx-linux/ -lmlx_Linux -lXext -lX11
 NAME = so_long
 LIB_DIR = libft
 LIB = $(LIB_DIR)/libft.a

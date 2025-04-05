@@ -6,11 +6,30 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 18:04:00 by nafarid           #+#    #+#             */
-/*   Updated: 2025/03/09 23:35:08 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/04/03 18:29:39 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	check_newline(char *all_line)
+{
+	int	i;
+
+	i = 0;
+	if (!all_line || all_line[0] == '\n' || all_line[0] == '\0')
+		return (1);
+	i++;
+	while (all_line[i])
+	{
+		if (all_line[i] == '\n' && all_line[i - 1] == '\n')
+			return (1);
+		i++;
+	}
+	if (all_line[i - 1] == '\n')
+		return (1);
+	return (0);
+}
 
 char	**get_map(char *map)
 {
@@ -22,18 +41,13 @@ char	**get_map(char *map)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (line[0] == '\n')
-		{
-			free(line);
-			break ;
-		}
 		tmp = ft_strjoin(all_line, line);
 		free(all_line);
 		all_line = tmp;
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (all_line[0] == '\0' || all_line[ft_strlen(all_line) - 1] == '\n')
+	if (check_newline(all_line))
 	{
 		free(all_line);
 		ft_error("Error\nMap file is empty or empty line\n");
