@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = src/main.c src/parsing.c
+SRC = src/main.c src/parsing.c src/init.c
 OBJS = $(SRC:.c=.o)
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Werror -Wextra -pthread
 NAME = philo
 

@@ -55,7 +55,7 @@ int is_philo_valide(int ac, char **av)
             return 0;
         }
         num = ft_atoi(av[i]);
-        if(i == 1 && (num == 0 || num > MAX_PHILO))
+        if(i == 1 && (num <= 0 || num > MAX_PHILO))
         {
             printf("Invalid number philosophers: %d\n", num);
             return 0; 
