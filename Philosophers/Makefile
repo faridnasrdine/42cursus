@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = src/main.c src/parsing.c src/init.c
+SRC = src/main.c src/parsing.c src/init.c src/utilis.c src/philo.c
 OBJS = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -pthread

@@ -31,4 +31,9 @@ int main(int ac, char **av)
         printf("Error: Failed to initialize philosopher data.\n");
         return (1);
     }
+    if(philo_thread(&philo))
+    {
+        printf("Error: Failed to create philosopher threads.\n");
+        return (1);
+    }
 }

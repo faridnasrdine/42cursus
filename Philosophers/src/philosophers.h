@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <pthread.h>
-# include <unistd.h>  // لو هتستعمل usleep
-# include <sys/time.h> // للوقت
+# include <unistd.h>  
+# include <sys/time.h>
 
 # define MAX_PHILO 200
 
@@ -52,4 +52,6 @@ typedef struct s_data
 int     is_philo_valide(int ac, char **av);
 int     ft_atoi(char *str);
 int init(t_data *philo, int ac, char **av);
+unsigned long long get_time(void);
+int philothread(t_data *philo);
 #endif
