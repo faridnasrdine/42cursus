@@ -21,12 +21,13 @@ unsigned long long get_time(void)
     return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-int	ft_usleep(unsigned long long time)
+int ft_usleep(unsigned long long time)
 {
-	unsigned long long	start;
+    unsigned long long start;
 
-	start = get_time();
-	while ((get_time() - start) < time)
-		usleep(time / 10);
-	return (0);
+    start = get_time();
+    while ((get_time() - start) < time)
+        usleep(100);  // sleep for shorter periods
+    return 0;
 }
+

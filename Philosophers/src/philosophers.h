@@ -60,4 +60,6 @@ unsigned long long get_time(void);
 int     philo_thread(t_data *philo);
 void    *check_all_dead(void *data);
 int	ft_usleep(unsigned long long time);
+void eating(t_philo *philo);
+void print_message(t_philo *philo, char *message);
 #endif
