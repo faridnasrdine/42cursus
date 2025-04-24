@@ -35,6 +35,7 @@ int init_data(t_data *philo, int ac, char **av)
     else
         philo->num_must_eat = -1;
     philo->dead = 0;
+    pthread_mutex_init(&philo->lock, NULL);
     return(0);
     
 }
@@ -55,8 +56,11 @@ void init_philos(t_data *philo)
         philo->philos[i].id = i + 1;
         philo->philos[i].fork_l = &philo->forks[i];
         philo->philos[i].fork_r = &philo->forks[(i + 1) % philo->num_philo];
-        philo->philos[i].last_meal = get_time();
+        philo->philos[i].die_time = philo->time_to_die;
+        philo->philos[i].eat_count = 0;
+        philo->philos[i].last_meal = 0;
         philo->philos[i].data = philo;
+        pthread_mutex_init(&philo->philos[i].lock, NULL);
         i++;
     }
 }

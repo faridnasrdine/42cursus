@@ -24,13 +24,15 @@ typedef struct s_data t_data;
 
 typedef struct s_philo
 {
+    t_data   *data;
+    pthread_t       th1;
     int             id;
-    pthread_t       thread;
     pthread_mutex_t *fork_l;
     pthread_mutex_t *fork_r;
+    pthread_mutex_t lock;
+    unsigned long long die_time;
     unsigned long long last_meal;
     int             eat_count;
-    t_data          *data;
 }   t_philo;
 
 typedef struct s_data
@@ -42,8 +44,11 @@ typedef struct s_data
     int                 num_must_eat;
     unsigned long long  start_time;
     int                 dead;
+    int                 finish;
+    
     pthread_t           *thread_id;
     pthread_mutex_t     *forks;
+    pthread_mutex_t lock;
     pthread_mutex_t     print;
     t_philo             *philos;
 }   t_data;
@@ -54,5 +59,5 @@ int     init(t_data *philo, int ac, char **av);
 unsigned long long get_time(void);
 int     philo_thread(t_data *philo);
 void    *check_all_dead(void *data);
-
+int	ft_usleep(unsigned long long time);
 #endif
