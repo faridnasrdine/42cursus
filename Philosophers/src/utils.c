@@ -27,7 +27,7 @@ int ft_usleep(unsigned long long time)
 
     start = get_time();
     while ((get_time() - start) < time)
-        usleep(100);  // sleep for shorter periods
+        usleep(time / 10);
     return 0;
 }
 

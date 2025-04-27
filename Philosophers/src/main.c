@@ -13,29 +13,27 @@
 #include "philosophers.h"
 void clean(t_data *philo)
 {
-    int i;
-
     if (philo->thread_id)
         free(philo->thread_id);
     if (philo->forks)
-    {
-        for (i = 0; i < philo->num_philo; i++)
-        {
-            pthread_mutex_destroy(&philo->forks[i]);
-        }
         free(philo->forks);
-    }
     if (philo->philos)
-    {
-        for (i = 0; i < philo->num_philo; i++)
-        {
-            pthread_mutex_destroy(&philo->philos[i].lock);
-        }
         free(philo->philos);
+}
+void ft_all_clean(t_data *philo)
+{
+    int i;
+
+    i = 0;
+    while (i < philo->num_philo)
+    {
+        pthread_mutex_destroy(&philo->philos[i].lock);
+        pthread_mutex_destroy(philo->forks);
+        i++;
     }
+    pthread_mutex_destroy(&philo->print);
     pthread_mutex_destroy(&philo->lock);
-    pthread_mutex_destroy(&philo->print);
-    pthread_mutex_destroy(&philo->print);
+    clean(philo);
 }
 int oen_philo(t_data *philo)
 {
@@ -46,9 +44,9 @@ int oen_philo(t_data *philo)
     pthread_detach(philo->thread_id[0]);
     while(philo->dead == 0)
     {
-        ft_usleep(0);
+        ft_usleep(1);
     }
-    clean(philo);
+    ft_all_clean(philo);
     return (0);
 }
 int main(int ac, char **av)

@@ -33,7 +33,7 @@ typedef struct s_philo
     unsigned long long die_time;
     unsigned long long last_meal;
     int             eat_count;
-}   t_philo;
+}  t_philo;
 
 typedef struct s_data
 {

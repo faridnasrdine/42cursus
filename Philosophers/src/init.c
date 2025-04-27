@@ -45,6 +45,15 @@ int init_forks(t_data *philo)
     int i = 0;
     while (i < philo->num_philo)
         pthread_mutex_init(&philo->forks[i++], NULL);
+    i = 1;
+    philo->philos[0].fork_l = &philo->forks[0];
+    philo->philos[0].fork_r = &philo->forks[philo->num_philo - 1];
+    while (i < philo->num_philo)
+    {
+        philo->philos[i].fork_l = &philo->forks[i];
+        philo->philos[i].fork_r = &philo->forks[i - 1];
+        i++;
+    }
     return 0;
 }
 
@@ -54,8 +63,8 @@ void init_philos(t_data *philo)
     while (i < philo->num_philo)
     {
         philo->philos[i].id = i + 1;
-        philo->philos[i].fork_l = &philo->forks[i];
-        philo->philos[i].fork_r = &philo->forks[(i + 1) % philo->num_philo];
+        // philo->philos[i].fork_l = &philo->forks[i];
+        // philo->philos[i].fork_r = &philo->forks[(i + 1) % philo->num_philo];
         philo->philos[i].die_time = philo->time_to_die;
         philo->philos[i].eat_count = 0;
         philo->philos[i].last_meal = 0;
