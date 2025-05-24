@@ -73,13 +73,12 @@ int init_forks(t_data *philo)
 void init_philos(t_data *philo)
 {
     int i = 0;
-    unsigned long long current_time = get_time();
     
     while (i < philo->num_philo)
     {
         philo->philos[i].id = i + 1;
         philo->philos[i].eat_count = 0;
-        philo->philos[i].last_meal = current_time;
+        philo->philos[i].last_meal = 0; // Will be set to start_time in philo_thread
         philo->philos[i].finished = 0;
         philo->philos[i].data = philo;
         pthread_mutex_init(&philo->philos[i].meal_lock, NULL);

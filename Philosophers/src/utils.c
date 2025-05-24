@@ -26,6 +26,6 @@ int ft_usleep(unsigned long long time)
     unsigned long long start = get_time();
     
     while ((get_time() - start) < time)
-        usleep(100); // Reduced sleep time for better precision
+        usleep(50);
     return (0);
 }

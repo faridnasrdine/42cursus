@@ -2,7 +2,8 @@
 
 void lock_forks(t_philo *philo)
 {
-    if (philo->id % 2 == 1)
+    // Always lock lower numbered fork first to prevent deadlock
+    if (philo->fork_l < philo->fork_r)
     {
         pthread_mutex_lock(philo->fork_l);
         print_message(philo, "has taken a fork");
@@ -28,14 +29,15 @@ void eating(t_philo *philo)
 {
     lock_forks(philo);
     
+    print_message(philo, "is eating");
+    
+    // Update last meal time and eat count
     pthread_mutex_lock(&philo->meal_lock);
     philo->last_meal = get_time();
     philo->eat_count++;
     pthread_mutex_unlock(&philo->meal_lock);
     
-    print_message(philo, "is eating");
     ft_usleep(philo->data->time_to_eat);
     
     unlock_forks(philo);
 }
-
