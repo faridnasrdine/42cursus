@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
 void clean(t_data *philo)
 {
     if (philo->thread_id)
@@ -20,35 +21,33 @@ void clean(t_data *philo)
     if (philo->philos)
         free(philo->philos);
 }
+
 void ft_all_clean(t_data *philo)
 {
-    int i;
+    int i = 0;
 
-    i = 0;
     while (i < philo->num_philo)
     {
-        pthread_mutex_destroy(&philo->philos[i].lock);
-        pthread_mutex_destroy(philo->forks);
+        pthread_mutex_destroy(&philo->philos[i].meal_lock);
+        pthread_mutex_destroy(&philo->forks[i]);
         i++;
     }
-    pthread_mutex_destroy(&philo->print);
-    pthread_mutex_destroy(&philo->lock);
+    pthread_mutex_destroy(&philo->print_lock);
+    pthread_mutex_destroy(&philo->dead_lock);
+    pthread_mutex_destroy(&philo->finish_lock);
     clean(philo);
 }
-int oen_philo(t_data *philo)
-{
 
+int one_philo(t_data *philo)
+{
     philo->start_time = get_time();
-    if(pthread_create(&philo->thread_id[0], NULL, &routine, &philo->philos[0]))
-        return 1;
-    pthread_detach(philo->thread_id[0]);
-    while(philo->dead == 0)
-    {
-        ft_usleep(1);
-    }
+    printf("0 1 has taken a fork\n");
+    ft_usleep(philo->time_to_die);
+    printf("%llu 1 died\n", philo->time_to_die);
     ft_all_clean(philo);
     return (0);
 }
+
 int main(int ac, char **av)
 {
     t_data philo;
@@ -68,15 +67,15 @@ int main(int ac, char **av)
         printf("Initialization failed\n");
         return (1);
     }
-    if(philo.num_philo == 1)
+    if (philo.num_philo == 1)
     {
-        return (oen_philo(&philo));
+        return (one_philo(&philo));
     }
     if (philo_thread(&philo))
     {
         printf("Thread creation failed\n");
         return (1);
     }
-    clean(&philo);
+    ft_all_clean(&philo);
     return (0);
 }
