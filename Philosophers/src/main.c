@@ -6,13 +6,18 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 18:59:38 by nafarid           #+#    #+#             */
-/*   Updated: 2025/04/20 12:09:42 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/05/25 15:15:33 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void clean(t_data *philo)
+void print_error(char *str)
+{
+    printf("%s\n", str);
+    return;
+}
+void ft_clean(t_data *philo)
 {
     if (philo->thread_id)
         free(philo->thread_id);
@@ -24,20 +29,20 @@ void clean(t_data *philo)
 
 void ft_all_clean(t_data *philo)
 {
-    int i = 0;
+    int i;
 
-    while (i < philo->num_philo)
+    i = 0;
+    while(i < philo->num_philo)
     {
         pthread_mutex_destroy(&philo->philos[i].meal_lock);
         pthread_mutex_destroy(&philo->forks[i]);
         i++;
     }
-    pthread_mutex_destroy(&philo->print_lock);
     pthread_mutex_destroy(&philo->dead_lock);
+    pthread_mutex_destroy(&philo->print_lock);
     pthread_mutex_destroy(&philo->finish_lock);
-    clean(philo);
+    ft_clean(philo);
 }
-
 int one_philo(t_data *philo)
 {
     philo->start_time = get_time();
@@ -54,23 +59,18 @@ int main(int ac, char **av)
 
     if (ac != 5 && ac != 6)
     {
-        printf("Usage: ./philo num_philo time_to_die time_to_eat time_to_sleep [num_must_eat]\n");
+        print_error(NUM_ARG);
         return (1);
     }
     if (!is_philo_valide(ac, av))
-    {
-        printf("Invalid arguments\n");
         return (1);
-    }
     if (!init(&philo, ac, av))
     {
         printf("Initialization failed\n");
         return (1);
     }
-    if (philo.num_philo == 1)
-    {
-        return (one_philo(&philo));
-    }
+    if(philo.num_philo == 1)
+        return(one_philo(&philo));
     if (philo_thread(&philo))
     {
         printf("Thread creation failed\n");

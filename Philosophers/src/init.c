@@ -29,37 +29,31 @@ int init_data(t_data *philo, int ac, char **av)
     philo->time_to_die = (unsigned long long)ft_atoi(av[2]);
     philo->time_to_eat = (unsigned long long)ft_atoi(av[3]);
     philo->time_to_sleep = (unsigned long long)ft_atoi(av[4]);
-    
     if (ac == 6)
         philo->num_must_eat = ft_atoi(av[5]);
     else
         philo->num_must_eat = -1;
-        
     philo->dead = 0;
     philo->all_finished = 0;
     philo->simulation_stop = 0;
-    
     if (pthread_mutex_init(&philo->dead_lock, NULL) != 0)
         return (1);
     if (pthread_mutex_init(&philo->print_lock, NULL) != 0)
         return (1);
     if (pthread_mutex_init(&philo->finish_lock, NULL) != 0)
         return (1);
-        
     return (0);
 }
 
 int init_forks(t_data *philo)
 {
     int i = 0;
-    
     while (i < philo->num_philo)
     {
         if (pthread_mutex_init(&philo->forks[i], NULL) != 0)
             return (1);
         i++;
     }
-    
     i = 0;
     while (i < philo->num_philo)
     {
@@ -67,7 +61,6 @@ int init_forks(t_data *philo)
         philo->philos[i].fork_r = &philo->forks[(i + 1) % philo->num_philo];
         i++;
     }
-    
     return (0);
 }
 

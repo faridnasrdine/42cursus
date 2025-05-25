@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utilis.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/14 15:20:45 by nafarid           #+#    #+#             */
+/*   Updated: 2025/05/25 15:51:10 by nafarid          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
 
 void lock_forks(t_philo *philo)
@@ -27,14 +39,27 @@ void unlock_forks(t_philo *philo)
 void eating(t_philo *philo)
 {
     lock_forks(philo);
-    
-    print_message(philo, "is eating");    
+    print_message(philo, "is eating");
     pthread_mutex_lock(&philo->meal_lock);
     philo->last_meal = get_time();
     philo->eat_count++;
     pthread_mutex_unlock(&philo->meal_lock);
-    
     ft_usleep(philo->data->time_to_eat);
-    
     unlock_forks(philo);
+}
+int time_to_think(t_data *data)
+{
+  unsigned long long think_time;
+
+  think_time = 0;
+  if(data->num_philo % 2 != 0)
+  {
+    think_time = (data->time_to_eat * 2) - data->time_to_sleep;
+    if(think_time > 600)
+    {
+      think_time = 200;
+      return think_time;
+    }
+  }
+  return think_time;
 }
