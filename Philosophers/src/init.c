@@ -37,6 +37,7 @@ int init_data(t_data *philo, int ac, char **av)
         
     philo->dead = 0;
     philo->all_finished = 0;
+    philo->simulation_stop = 0;
     
     if (pthread_mutex_init(&philo->dead_lock, NULL) != 0)
         return (1);
@@ -78,7 +79,7 @@ void init_philos(t_data *philo)
     {
         philo->philos[i].id = i + 1;
         philo->philos[i].eat_count = 0;
-        philo->philos[i].last_meal = 0; // Will be set to start_time in philo_thread
+        philo->philos[i].last_meal = 0;
         philo->philos[i].finished = 0;
         philo->philos[i].data = philo;
         pthread_mutex_init(&philo->philos[i].meal_lock, NULL);

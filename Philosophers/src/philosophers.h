@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
@@ -46,6 +47,7 @@ typedef struct s_data
     unsigned long long  start_time;
     int                 dead;
     int                 all_finished;
+    int                 simulation_stop;
     
     pthread_t           *thread_id;
     pthread_t           monitor_thread;
@@ -69,6 +71,8 @@ void                   *routine(void *data);
 void                   print_message(t_philo *philo, char *message);
 int                    is_dead(t_data *data);
 void                   set_dead(t_data *data);
+int                    simulation_stopped(t_data *data);
+void                   stop_simulation(t_data *data);
 void                   ft_all_clean(t_data *philo);
 void                   clean(t_data *philo);
 int                    one_philo(t_data *philo);
