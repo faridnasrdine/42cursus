@@ -74,13 +74,15 @@ int						init(t_data *philo, int ac, char **av);
 unsigned long long		get_time(void);
 int						philo_thread(t_data *philo);
 void					*check_all_dead(void *data);
-int						ft_usleep(unsigned long long time);
+int						ft_usleep(unsigned long long time, t_philo *philo);
 void					eating(t_philo *philo);
 void					*routine(void *data);
-void					print_message(t_philo *philo, char *message);
+int						print_message(t_philo *philo, char *message);
 int						time_to_think(t_data *data);
 int						simulation_stopped(t_data *data);
 void					set_died(t_data *data);
 void					stop_simulation(t_data *data);
 int						simulation_stopped(t_data *data);
+void					lock_forks(t_philo *philo);
+void					unlock_forks(t_philo *philo);
 #endif
