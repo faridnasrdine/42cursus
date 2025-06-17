@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:37 by nafarid           #+#    #+#             */
-/*   Updated: 2025/05/26 20:29:22 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:23:35 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <sys/time.h>
 # include <unistd.h>
 /*=========================== Macros =======================*/
-# define MAX_PHILO 200
 # define NUM_ARG "Error: Invalid number of arguments"
 # define TAKE_FORK "has taken a fork"
 # define EAT "is eating"
@@ -31,6 +30,7 @@
 /*=========================== Data Types ===========================*/
 
 typedef struct s_data	t_data;
+
 
 typedef struct s_philo
 {
@@ -74,15 +74,12 @@ int						init(t_data *philo, int ac, char **av);
 unsigned long long		get_time(void);
 int						philo_thread(t_data *philo);
 void					*check_all_dead(void *data);
-int						ft_usleep(unsigned long long time, t_philo *philo);
-void					eating(t_philo *philo);
+int	ft_usleep(unsigned long long time, t_philo *philo);
+int	philo_eat(t_philo *philo);
 void					*routine(void *data);
-int						print_message(t_philo *philo, char *message);
-int						time_to_think(t_data *data);
+int	print_message(t_philo *philo, char *message);
+int						philo_think(t_philo *philo);
 int						simulation_stopped(t_data *data);
-void					set_died(t_data *data);
 void					stop_simulation(t_data *data);
 int						simulation_stopped(t_data *data);
-void					lock_forks(t_philo *philo);
-void					unlock_forks(t_philo *philo);
 #endif

@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 18:59:38 by nafarid           #+#    #+#             */
-/*   Updated: 2025/05/26 20:27:45 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/06/17 11:46:16 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	one_philo(t_data *philo)
 {
 	philo->start_time = get_time();
 	printf("0 1 has taken a fork\n");
-	ft_usleep(philo->time_to_die);
+	ft_usleep(philo->time_to_die, philo->philos);
 	printf("%llu 1 died\n", philo->time_to_die);
 	ft_all_clean(philo);
 	return (0);
@@ -67,7 +67,7 @@ int	main(int ac, char **av)
 	}
 	if (philo.num_philo == 1)
 		return (one_philo(&philo));
-	if (philo_thread(&philo))
+	if (philo_thread(&philo) == 1)
 	{
 		printf("Thread creation failed\n");
 		return (1);

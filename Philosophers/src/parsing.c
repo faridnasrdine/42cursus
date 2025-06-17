@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 20:33:07 by nafarid           #+#    #+#             */
-/*   Updated: 2025/05/26 20:28:22 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/05/27 14:53:17 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	is_philo_valide(int ac, char **av)
 			return (0);
 		}
 		num = ft_atoi(av[i]);
-		if (i == 1 && (num <= 0 || num > MAX_PHILO))
+		if (i == 1 && (num <= 0))
 		{
 			printf("Invalid number philosophers: %d\n", num);
 			return (0);
