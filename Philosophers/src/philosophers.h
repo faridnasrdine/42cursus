@@ -6,13 +6,14 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:37 by nafarid           #+#    #+#             */
-/*   Updated: 2025/06/17 15:23:35 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/06/18 09:30:46 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 /*=========================== Includes ==========================*/
+# include <limits.h>
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -20,7 +21,10 @@
 # include <sys/time.h>
 # include <unistd.h>
 /*=========================== Macros =======================*/
-# define NUM_ARG "Error: Invalid number of arguments"
+# define NUM_ARG "Argument Count Error: "
+# define NUM_P "Error: Number of philo must be greater than 0. Received: "
+# define NUM_T "Error: Argument must be a positive number Received: "
+# define MUST_E "Error: Maximum meals must be a non-negative number Received: "
 # define TAKE_FORK "has taken a fork"
 # define EAT "is eating"
 # define SLEEP "is sleeping"
@@ -30,7 +34,6 @@
 /*=========================== Data Types ===========================*/
 
 typedef struct s_data	t_data;
-
 
 typedef struct s_philo
 {
@@ -69,17 +72,17 @@ typedef struct s_data
 
 int						is_philo_valide(int ac, char **av);
 int						ft_atoi(char *str);
-void					print_error(char *str);
+void					print_error(char *str, char *av);
 int						init(t_data *philo, int ac, char **av);
 unsigned long long		get_time(void);
 int						philo_thread(t_data *philo);
-void					*check_all_dead(void *data);
-int	ft_usleep(unsigned long long time, t_philo *philo);
-int	philo_eat(t_philo *philo);
+int						ft_usleep(unsigned long long time, t_philo *philo);
+int						philo_eat(t_philo *philo);
 void					*routine(void *data);
-int	print_message(t_philo *philo, char *message);
+int						print_message(t_philo *philo, char *message);
 int						philo_think(t_philo *philo);
 int						simulation_stopped(t_data *data);
 void					stop_simulation(t_data *data);
 int						simulation_stopped(t_data *data);
+int						philo_sleep(t_philo *philo);
 #endif

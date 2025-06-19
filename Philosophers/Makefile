@@ -6,7 +6,7 @@
 #    By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/05 18:58:48 by nafarid           #+#    #+#              #
-#    Updated: 2025/05/30 14:21:44 by nafarid          ###   ########.fr        #
+#    Updated: 2025/06/19 09:34:54 by nafarid          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRC = src/main.c src/parsing.c src/init.c src/utils.c \
 	src/philo.c src/eating.c src/philo_utils.c
 OBJS = $(SRC:.c=.o)
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g3 -pthread 
+CFLAGS = -Wall -Werror -Wextra -pthread 
 NAME = philo
 
 all: $(NAME)

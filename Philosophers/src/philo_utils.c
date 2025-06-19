@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:22:29 by nafarid           #+#    #+#             */
-/*   Updated: 2025/06/17 09:12:26 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/06/18 09:31:46 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,13 @@ int	simulation_stopped(t_data *data)
 	stop = data->simulation_stop;
 	pthread_mutex_unlock(&data->dead_lock);
 	return (stop);
+}
+
+int	philo_sleep(t_philo *philo)
+{
+	if (print_message(philo, "is sleeping"))
+		return (1);
+	if (ft_usleep(philo->data->time_to_sleep, philo))
+		return (1);
+	return (0);
 }

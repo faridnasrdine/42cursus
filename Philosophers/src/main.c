@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 18:59:38 by nafarid           #+#    #+#             */
-/*   Updated: 2025/06/17 11:46:16 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/06/19 13:21:10 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,17 @@ int	main(int ac, char **av)
 {
 	t_data	philo;
 
-	if (ac != 5 && ac != 6)
+	if (ac < 5 || ac > 6)
 	{
-		print_error(NUM_ARG);
+		print_error(NUM_ARG, "⚠️");
 		return (1);
 	}
-	if (!is_philo_valide(ac, av))
+	if (is_philo_valide(ac, av))
 		return (1);
 	if (!init(&philo, ac, av))
 	{
 		printf("Initialization failed\n");
+		ft_clean(&philo);
 		return (1);
 	}
 	if (philo.num_philo == 1)
